@@ -69,7 +69,7 @@ CHALLENGES = [
     {
         "key": "find_the_water",
         "name": "Find the Water",
-        "competitionId": 121000,
+        "competitionId": 120514,
         "referer": "https://www.kaggle.com/competitions/find-the-water/leaderboard",
     },
     {
@@ -211,7 +211,22 @@ for mode in ['public', 'private']:
         baseline = 2400 
         entry['displayScore'] = max(0, (baseline - original_score) / baseline)
 
-print("\nAfter inversion of aitsp scores:")
+
+for mode in ['public', 'private']:
+    for entry in all_results['factcheck'][mode]:
+        original_score = float(entry['displayScore'])
+        entry['displayScore'] = str(original_score / 10 )
+
+
+
+for mode in ['public', 'private']:
+    for entry in all_results['legal'][mode]:
+        original_score = float(entry['displayScore'])
+        entry['displayScore'] = str(original_score / 10 )
+
+
+
+print("\nAfter inversion of  scores:")
 print(json.dumps(all_results, indent=4))
 
 
